@@ -31,14 +31,7 @@ class Solver(aoc.util.Solver):
         self.right.sort()
 
     def part_one(self) -> int:
-        sum = 0
-        for lv, rv in zip(self.left, self.right):
-            sum += abs(lv - rv)
-        return sum
+        return sum(abs(lv - rv) for lv, rv in zip(self.left, self.right))
 
     def part_two(self) -> int:
-        sum = 0
-        for v in self.left:
-            if v in self.counts:
-                sum += v * self.counts[v]
-        return sum
+        return sum(v * self.counts.get(v, 0) for v in self.left)
