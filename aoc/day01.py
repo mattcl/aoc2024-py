@@ -1,4 +1,5 @@
 """01: Historian Hysteria"""
+from collections import Counter
 
 import aoc.util
 
@@ -12,26 +13,18 @@ class Solver(aoc.util.Solver):
 
         self.left = []
         self.right = []
-        self.counts = {}
 
         for line in input.strip().split("\n"):
-            parts = line.split(" ", maxsplit=1)
-            lv = int(parts[0].strip())
-            rv = int(parts[1].strip())
-
-            if rv in self.counts:
-                self.counts[rv] += 1
-            else:
-                self.counts[rv] = 1
-
-            self.left.append(lv)
-            self.right.append(rv)
+            parts = line.split("   ", maxsplit=1)
+            self.left.append(int(parts[0]))
+            self.right.append(int(parts[1]))
 
         self.left.sort()
         self.right.sort()
+        self.counts = Counter(self.right)
 
     def part_one(self) -> int:
         return sum(abs(lv - rv) for lv, rv in zip(self.left, self.right))
 
     def part_two(self) -> int:
-        return sum(v * self.counts.get(v, 0) for v in self.left)
+        return sum(v * self.counts[v] for v in self.left)
