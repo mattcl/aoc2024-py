@@ -55,23 +55,23 @@ class Solver(aoc.util.Solver):
     def _reorderd_middle(self, update) -> int:
         each_side = len(update) // 2
 
+        seen = 0
+
+        max = (1 << 128) - 1
+
         for page in update:
-            seen = 0
+            seen |= 1 << page
 
-            for other in update:
-                if other == page:
-                    continue
-
-                seen |= 1 << other
-
+        for page in update:
+            cur = seen & (max - (1 << page))
             # check the number of numbers that need to be to our left
             rule = self.rules_left[page]
-            if rule == 0 or (seen & rule).bit_count() != each_side:
+            if rule == 0 or (cur & rule).bit_count() != each_side:
                 continue
 
             # check the number of numbers that need to be to our right
             rule = self.rules_right[page]
-            if rule == 0 or (seen & rule).bit_count() != each_side:
+            if rule == 0 or (cur & rule).bit_count() != each_side:
                 continue
 
             # if we're here, we have exactly each_side number to the left and
