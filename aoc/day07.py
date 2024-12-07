@@ -28,86 +28,51 @@ class Solver(aoc.util.Solver):
         return self.p2
 
 
-# too slow doing this in python
-# def combined_dfs(args) -> (int, int):
-#     target, values = args
-#     num_values = len(values)
-#     valid = [False, False]
-#     _combined_dfs(target, 1, num_values, values, values[0], False, valid)
-
-#     if valid[0]:
-#         return (target, target)
-
-#     if valid[1]:
-#         return (0, target)
-
-#     return (0, 0)
-
-
 def combined_dfs(args) -> (int, int):
     target, values = args
     num_values = len(values)
 
-    if _p1_dfs(target, 1, num_values, values, values[0]):
+    if _p1_dfs(num_values, values, target):
         return (target, target)
 
-    if _p2_dfs(target, 1, num_values, values, values[0]):
+    if _p2_dfs(num_values, values, target):
         return (0, target)
 
     return (0, 0)
 
 
-def _p1_dfs(target, idx, num_values, values, head) -> bool:
-    if idx == num_values:
-        return target == head
+def _p1_dfs(remaining, values, head) -> bool:
+    if remaining == 0:
+        return head == 0
 
-    if head > target:
+    if head < 0:
         return False
 
+    idx = remaining - 1
     v = values[idx]
-    next_idx = idx + 1
 
-    return _p1_dfs(target, next_idx, num_values, values, head * v) or _p1_dfs(target, next_idx, num_values, values, head + v)
+    if head % v == 0 and _p1_dfs(idx, values, head / v):
+        return True
+
+    return _p1_dfs(idx, values, head - v)
 
 
-def _p2_dfs(target, idx, num_values, values, head) -> bool:
-    if idx == num_values:
-        return head == target
+def _p2_dfs(remaining, values, head) -> bool:
+    if remaining == 0:
+        return head == 0
 
-    if head > target:
-        return
+    if head < 0:
+        return False
 
+    idx = remaining - 1
     v = values[idx]
-    next_idx = idx + 1
+
+    if head % v == 0 and _p2_dfs(idx, values, head / v):
+        return True
 
     width = int(math.log10(v)) + 1
-    return _p2_dfs(target, next_idx, num_values, values, head * pow(10, width) + v) or _p2_dfs(target, next_idx, num_values, values, head * v) or _p2_dfs(target, next_idx, num_values, values, head + v)
+    divisor = pow(10, width)
+    if head % divisor == v and _p2_dfs(idx, values, head // divisor):
+        return True
 
-
-# this is slower in python
-def _combined_dfs(target, idx, num_values, values, head, used_concat, valid):
-    if idx == num_values:
-        if head == target:
-            valid[1] = True
-            if not used_concat:
-                valid[0] = True
-        return
-
-    if head > target:
-        return
-
-    v = values[idx]
-    next_idx = idx + 1
-
-    if not valid[1]:
-        width = int(math.log10(v)) + 1
-        _combined_dfs(target, next_idx, num_values, values, head * pow(10, width) + v, True, valid)
-
-    _combined_dfs(target, next_idx, num_values, values, head * v, used_concat, valid)
-
-    if valid[0]:
-        return
-
-    _combined_dfs(target, next_idx, num_values, values, head + v, used_concat, valid)
-
-
+    return _p2_dfs(idx, values, head - v)
