@@ -65,6 +65,7 @@ class Solver(aoc.util.Solver):
             head += 1
 
         return checksum
+
     def part_two(self) -> int:
         checksum = 0
 
