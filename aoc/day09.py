@@ -53,8 +53,7 @@ class Solver(aoc.util.Solver):
             while free > 0 and tail > head:
                 rear, taken = take(rear, free)
 
-                for i in range(taken):
-                    checksum += rear[0] * (pos + i)
+                checksum += rear[0] * (pos + pos + taken - 1) * taken / 2
 
                 pos += taken
                 free -= taken
@@ -66,7 +65,6 @@ class Solver(aoc.util.Solver):
             head += 1
 
         return checksum
-
     def part_two(self) -> int:
         checksum = 0
 
@@ -104,7 +102,7 @@ class Solver(aoc.util.Solver):
 
 
 def checksum_file(file, pos) -> int:
-    return sum((i + pos) * file[0] for i in range(file[2]))
+    return file[0] * (pos + pos + file[2] - 1) * file[2] / 2
 
 
 # take amount blocks from the given file, returning a new file and the amount
