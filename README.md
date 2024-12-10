@@ -1,5 +1,31 @@
 # 2024 Advent of Code Solutions
 
+These are roughly a port of my [rust
+solutions](https://github.com/mattcl/aoc2024), with a similar
+performance-oriented goal.
+
+
+## Current runtime ~93.645 ms
+
+```
+❯ aoc-tools python-summary benchmarks.json -l bench-suffixes.json
++-----------------------------------------------------+
+| Problem                    Time (ms)   % Total Time |
++=====================================================+
+| 01 historian hysteria        0.76634          0.818 |
+| 02 red nosed reports         3.09264          3.302 |
+| 03 mull it over              1.30388          1.392 |
+| 04 ceres search              6.18938          6.609 |
+| 05 print queue               1.77336          1.894 |
+| 06 guard gallivant          45.60157         48.696 |
+| 07 bridge repair            15.93925         17.021 |
+| 08 resonant collinearity     0.64530          0.689 |
+| 09 disk fragmenter          15.84723         16.923 |
+| 10 hoof it                   2.48644          2.655 |
+| Total                       93.64539        100.000 |
++-----------------------------------------------------+
+```
+
 This package distributes a library named
 `mattcl-aoc2024` that
 exposes a module named `aoc` and an executable named
