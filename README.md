@@ -5,26 +5,26 @@ solutions](https://github.com/mattcl/aoc2024), with a similar
 performance-oriented goal.
 
 
-## Current runtime ~182.8 ms
+## Current runtime ~175.6 ms
 
 ```
 ❯ aoc-tools python-summary benchmarks.json -l bench-suffixes.json
 +-----------------------------------------------------+
 | Problem                    Time (ms)   % Total Time |
 +=====================================================+
-| 01 historian hysteria        0.77848          0.426 |
-| 02 red nosed reports         3.11709          1.705 |
-| 03 mull it over              1.32299          0.724 |
-| 04 ceres search              6.03881          3.303 |
-| 05 print queue               1.71101          0.936 |
-| 06 guard gallivant          45.38399         24.826 |
-| 07 bridge repair            15.99932          8.752 |
-| 08 resonant collinearity     0.64657          0.354 |
-| 09 disk fragmenter          15.76280          8.623 |
-| 10 hoof it                   2.45928          1.345 |
-| 11 plutonium pebbles        60.91385         33.321 |
-| 12 garden groups            28.67447         15.686 |
-| Total                      182.80865        100.000 |
+| 01 historian hysteria        0.76340          0.435 |
+| 02 red nosed reports         3.10560          1.768 |
+| 03 mull it over              1.30811          0.745 |
+| 04 ceres search              6.12713          3.489 |
+| 05 print queue               1.72003          0.979 |
+| 06 guard gallivant          46.13057         26.265 |
+| 07 bridge repair            16.43397          9.357 |
+| 08 resonant collinearity     0.64524          0.367 |
+| 09 disk fragmenter          15.68182          8.929 |
+| 10 hoof it                   2.42948          1.383 |
+| 11 plutonium pebbles        61.29560         34.899 |
+| 12 garden groups            19.99498         11.384 |
+| Total                      175.63593        100.000 |
 +-----------------------------------------------------+
 ```
 
