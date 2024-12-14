@@ -5,28 +5,28 @@ solutions](https://github.com/mattcl/aoc2024), with a similar
 performance-oriented goal.
 
 
-## Current runtime ~304.8 ms
+## Current runtime ~205.9 ms
 
 ```
 ❯ aoc-tools python-summary benchmarks.json -l bench-suffixes.json
 +-----------------------------------------------------+
 | Problem                    Time (ms)   % Total Time |
 +=====================================================+
-| 01 historian hysteria        0.77711          0.255 |
-| 02 red nosed reports         3.12603          1.025 |
-| 03 mull it over              1.32669          0.435 |
-| 04 ceres search              6.06057          1.988 |
-| 05 print queue               1.72930          0.567 |
-| 06 guard gallivant          46.14383         15.137 |
-| 07 bridge repair            16.14076          5.295 |
-| 08 resonant collinearity     0.63185          0.207 |
-| 09 disk fragmenter          15.67650          5.143 |
-| 10 hoof it                   2.43239          0.798 |
-| 11 plutonium pebbles        61.39167         20.139 |
-| 12 garden groups            20.35123          6.676 |
-| 13 claw contraption          0.78405          0.257 |
-| 14 restroom redoubt        128.26270         42.076 |
-| Total                      304.83469        100.000 |
+| 01 historian hysteria        0.78041          0.379 |
+| 02 red nosed reports         3.08752          1.500 |
+| 03 mull it over              1.32090          0.642 |
+| 04 ceres search              6.18007          3.002 |
+| 05 print queue               1.70856          0.830 |
+| 06 guard gallivant          45.63701         22.170 |
+| 07 bridge repair            15.91925          7.733 |
+| 08 resonant collinearity     0.63890          0.310 |
+| 09 disk fragmenter          15.76855          7.660 |
+| 10 hoof it                   2.50143          1.215 |
+| 11 plutonium pebbles        61.47741         29.865 |
+| 12 garden groups            20.37608          9.898 |
+| 13 claw contraption          0.77981          0.379 |
+| 14 restroom redoubt         29.67832         14.417 |
+| Total                      205.85422        100.000 |
 +-----------------------------------------------------+
 ```
 

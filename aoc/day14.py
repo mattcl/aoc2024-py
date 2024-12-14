@@ -32,19 +32,26 @@ class Solver(aoc.util.Solver):
         return math.prod(counts)
 
     def part_two(self) -> int:
-        seen = [0] * HEIGHT
-        for i in range(3000, 10000):
-            for guard in self.guards:
-                pos = bounded(guard, i)
-                mask = 1 << pos[0]
+        x_pos = [[0] * len(self.guards) for _ in range(WIDTH)]
+        y_pos = [[0] * len(self.guards) for _ in range(HEIGHT)]
+        cache = [[0] * WIDTH for _ in range(HEIGHT)]
 
-                if seen[pos[1]] & mask != 0:
-                    seen = [0] * HEIGHT
+        for i in range(max(WIDTH, HEIGHT)):
+            for g_idx, guard in enumerate(self.guards):
+                x, y = bounded(guard, i)
+                x_pos[i % WIDTH][g_idx] = x
+                y_pos[i % HEIGHT][g_idx] = y
+
+        for i in range(1000, 10000):
+            success = True
+            for x, y in zip(x_pos[i % WIDTH], y_pos[i % HEIGHT]):
+                if cache[y][x] == i:
+                    success = False
                     break
 
-                seen[pos[1]] |= mask
+                cache[y][x] = i
 
-            if seen[MID_Y] > 0:
+            if success:
                 return i
 
         return -1
