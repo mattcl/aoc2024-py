@@ -5,26 +5,28 @@ solutions](https://github.com/mattcl/aoc2024), with a similar
 performance-oriented goal.
 
 
-## Current runtime ~175.6 ms
+## Current runtime ~304.8 ms
 
 ```
 ❯ aoc-tools python-summary benchmarks.json -l bench-suffixes.json
 +-----------------------------------------------------+
 | Problem                    Time (ms)   % Total Time |
 +=====================================================+
-| 01 historian hysteria        0.76340          0.435 |
-| 02 red nosed reports         3.10560          1.768 |
-| 03 mull it over              1.30811          0.745 |
-| 04 ceres search              6.12713          3.489 |
-| 05 print queue               1.72003          0.979 |
-| 06 guard gallivant          46.13057         26.265 |
-| 07 bridge repair            16.43397          9.357 |
-| 08 resonant collinearity     0.64524          0.367 |
-| 09 disk fragmenter          15.68182          8.929 |
-| 10 hoof it                   2.42948          1.383 |
-| 11 plutonium pebbles        61.29560         34.899 |
-| 12 garden groups            19.99498         11.384 |
-| Total                      175.63593        100.000 |
+| 01 historian hysteria        0.77711          0.255 |
+| 02 red nosed reports         3.12603          1.025 |
+| 03 mull it over              1.32669          0.435 |
+| 04 ceres search              6.06057          1.988 |
+| 05 print queue               1.72930          0.567 |
+| 06 guard gallivant          46.14383         15.137 |
+| 07 bridge repair            16.14076          5.295 |
+| 08 resonant collinearity     0.63185          0.207 |
+| 09 disk fragmenter          15.67650          5.143 |
+| 10 hoof it                   2.43239          0.798 |
+| 11 plutonium pebbles        61.39167         20.139 |
+| 12 garden groups            20.35123          6.676 |
+| 13 claw contraption          0.78405          0.257 |
+| 14 restroom redoubt        128.26270         42.076 |
+| Total                      304.83469        100.000 |
 +-----------------------------------------------------+
 ```
 
