@@ -5,28 +5,29 @@ solutions](https://github.com/mattcl/aoc2024), with a similar
 performance-oriented goal.
 
 
-## Current runtime ~205.9 ms
+## Current runtime ~215.5 ms
 
 ```
 ❯ aoc-tools python-summary benchmarks.json -l bench-suffixes.json
 +-----------------------------------------------------+
 | Problem                    Time (ms)   % Total Time |
 +=====================================================+
-| 01 historian hysteria        0.78041          0.379 |
-| 02 red nosed reports         3.08752          1.500 |
-| 03 mull it over              1.32090          0.642 |
-| 04 ceres search              6.18007          3.002 |
-| 05 print queue               1.70856          0.830 |
-| 06 guard gallivant          45.63701         22.170 |
-| 07 bridge repair            15.91925          7.733 |
-| 08 resonant collinearity     0.63890          0.310 |
-| 09 disk fragmenter          15.76855          7.660 |
-| 10 hoof it                   2.50143          1.215 |
-| 11 plutonium pebbles        61.47741         29.865 |
-| 12 garden groups            20.37608          9.898 |
-| 13 claw contraption          0.77981          0.379 |
-| 14 restroom redoubt         29.67832         14.417 |
-| Total                      205.85422        100.000 |
+| 01 historian hysteria        0.76871          0.357 |
+| 02 red nosed reports         3.11176          1.444 |
+| 03 mull it over              1.32098          0.613 |
+| 04 ceres search              6.05502          2.810 |
+| 05 print queue               1.73587          0.806 |
+| 06 guard gallivant          45.18350         20.970 |
+| 07 bridge repair            16.01985          7.435 |
+| 08 resonant collinearity     0.63489          0.295 |
+| 09 disk fragmenter          15.87826          7.369 |
+| 10 hoof it                   2.48144          1.152 |
+| 11 plutonium pebbles        62.12016         28.831 |
+| 12 garden groups            20.01836          9.291 |
+| 13 claw contraption          0.77602          0.360 |
+| 14 restroom redoubt         29.94172         13.896 |
+| 15 warehouse woes            9.41767          4.371 |
+| Total                      215.46420        100.000 |
 +-----------------------------------------------------+
 ```
 
