@@ -5,31 +5,32 @@ solutions](https://github.com/mattcl/aoc2024), with a similar
 performance-oriented goal.
 
 
-## Current runtime ~249.6 ms
+## Current runtime ~251.0 ms
 
 ```
 ❯ aoc-tools python-summary benchmarks.json -l bench-suffixes.json
-+-----------------------------------------------------+
-| Problem                    Time (ms)   % Total Time |
-+=====================================================+
-| 01 historian hysteria        0.79263          0.318 |
-| 02 red nosed reports         3.15481          1.264 |
-| 03 mull it over              1.29821          0.520 |
-| 04 ceres search              6.09436          2.442 |
-| 05 print queue               1.73682          0.696 |
-| 06 guard gallivant          45.69197         18.306 |
-| 07 bridge repair            15.62461          6.260 |
-| 08 resonant collinearity     0.64053          0.257 |
-| 09 disk fragmenter          15.66272          6.275 |
-| 10 hoof it                   2.50410          1.003 |
-| 11 plutonium pebbles        61.25868         24.543 |
-| 12 garden groups            20.45383          8.195 |
-| 13 claw contraption          0.79366          0.318 |
-| 14 restroom redoubt         30.25279         12.121 |
-| 15 warehouse woes            9.54104          3.823 |
-| 16                          34.09773         13.661 |
-| Total                      249.59850        100.000 |
-+-----------------------------------------------------+
++------------------------------------------------------+
+| Problem                     Time (ms)   % Total Time |
++======================================================+
+| 01 historian hysteria         0.79203          0.316 |
+| 02 red nosed reports          3.12065          1.243 |
+| 03 mull it over               1.29540          0.516 |
+| 04 ceres search               6.10952          2.434 |
+| 05 print queue                1.73702          0.692 |
+| 06 guard gallivant           45.08410         17.965 |
+| 07 bridge repair             16.12653          6.426 |
+| 08 resonant collinearity      0.63802          0.254 |
+| 09 disk fragmenter           15.68332          6.249 |
+| 10 hoof it                    2.42030          0.964 |
+| 11 plutonium pebbles         62.53569         24.919 |
+| 12 garden groups             19.95810          7.953 |
+| 13 claw contraption           0.78670          0.313 |
+| 14 restroom redoubt          30.33634         12.088 |
+| 15 warehouse woes             9.47726          3.776 |
+| 16 reindeer maze             34.11194         13.593 |
+| 17 chronospatial computer     0.74719          0.298 |
+| Total                       250.96010        100.000 |
++------------------------------------------------------+
 ```
 
 This package distributes a library named
