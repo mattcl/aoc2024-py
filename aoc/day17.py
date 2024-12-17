@@ -11,14 +11,28 @@ class Solver(aoc.util.Solver):
         self.a = int(parts[0].replace("Register A: ", "").split("\n")[0])
         self.program = list(map(int, parts[1].replace("Program: ", "").split(",")))
 
-        # these are fixed positions in the program that vary between inputs
+        #   for my input,
+        #   0 bst 4  b = a & 0b111
+        #   2 bxl 3  b = b ^ 3
+        #   4 cdv 5  c = a >> b
+        #   6 bxc 1  b = b ^ c
+        #   8 bxl 3  b = b ^ 3
+        #  10 adv 3  a = a >> 3
+        #  12 out 5  out b & 0b111
+        #  14 jnz 0  goto 0 if a != 0
         #
-        # they must always be in their expectd locations
+        # i've been told that the position of the second bxl varies a bit
+        #
+        # this is the example expected locations from my input
         # expected = [2, 4, 1, v1, 7, 5, 4, v2, 1, v3, 0, 3, 5, 5, 3, 0];
 
         self.v1 = self.program[3]
-        # v2 = self.program[7]
-        self.v3 = self.program[9]
+
+        # find the second bxl
+        for ip in range(4, len(self.program), 2):
+            if self.program[ip] == 1:
+                self.v3 = self.program[ip + 1]
+                break
 
     def part_one(self) -> str:
         out = []
