@@ -5,32 +5,33 @@ solutions](https://github.com/mattcl/aoc2024), with a similar
 performance-oriented goal.
 
 
-## Current runtime ~266.4 ms
+## Current runtime ~282.2 ms
 
 ```
 ❯ aoc-tools python-summary benchmarks.json -l bench-suffixes.json
 +------------------------------------------------------+
 | Problem                     Time (ms)   % Total Time |
 +======================================================+
-| 01 historian hysteria         0.78235          0.294 |
-| 02 red nosed reports          3.13278          1.176 |
-| 03 mull it over               1.30324          0.489 |
-| 04 ceres search               6.19838          2.326 |
-| 05 print queue                1.74640          0.655 |
-| 06 guard gallivant           48.09099         18.050 |
-| 07 bridge repair             15.77388          5.920 |
-| 08 resonant collinearity      0.64747          0.243 |
-| 09 disk fragmenter           15.57624          5.846 |
-| 10 hoof it                    2.39629          0.899 |
-| 11 plutonium pebbles         61.10075         22.933 |
-| 12 garden groups             20.12079          7.552 |
-| 13 claw contraption           0.79309          0.298 |
-| 14 restroom redoubt          29.97409         11.250 |
-| 15 warehouse woes             9.40992          3.532 |
-| 16 reindeer maze             33.79482         12.684 |
-| 17 chronospatial computer     0.75118          0.282 |
-| 18 ram run                   14.83636          5.569 |
-| Total                       266.42902        100.000 |
+| 01 historian hysteria         0.77127          0.273 |
+| 02 red nosed reports          3.14255          1.114 |
+| 03 mull it over               1.31203          0.465 |
+| 04 ceres search               6.04956          2.144 |
+| 05 print queue                1.73673          0.615 |
+| 06 guard gallivant           46.21793         16.378 |
+| 07 bridge repair             16.06666          5.693 |
+| 08 resonant collinearity      0.64248          0.228 |
+| 09 disk fragmenter           15.84932          5.616 |
+| 10 hoof it                    2.48842          0.882 |
+| 11 plutonium pebbles         60.96228         21.603 |
+| 12 garden groups             19.93764          7.065 |
+| 13 claw contraption           0.77564          0.275 |
+| 14 restroom redoubt          30.05260         10.649 |
+| 15 warehouse woes             9.50652          3.369 |
+| 16 reindeer maze             34.39167         12.187 |
+| 17 chronospatial computer     0.72618          0.257 |
+| 18 ram run                   14.54821          5.155 |
+| 19 linen layout              17.01962          6.031 |
+| Total                       282.19732        100.000 |
 +------------------------------------------------------+
 ```
 
