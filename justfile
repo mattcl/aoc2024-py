@@ -14,6 +14,10 @@ test:
 bench:
     poetry run pytest tests -m "bench" --benchmark-group-by=name
 
+# run all benchmarks with json outpu
+bench-json:
+    poetry run pytest tests -m "bench" --benchmark-group-by=name --benchmark-json=benchmarks.json
+
 # run all tests and benchmarks
 all:
     poetry run pytest tests --benchmark-group-by=name
