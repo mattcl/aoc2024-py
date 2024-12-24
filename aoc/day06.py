@@ -73,8 +73,12 @@ class Solver(aoc.util.Solver):
 def pool_init(shared_grid):
     global grid
     global size
+    global cached_jumps
     grid = shared_grid
     size = len(shared_grid)
+    # each worker will have its own cache, so it'll be useful beyond an
+    # individual checked position
+    cached_jumps = {}
 
 
 def check_position(args) -> int:
@@ -98,16 +102,34 @@ def check_position(args) -> int:
         #
         # my rust solution afforded finding this location in O(1) time, but we
         # have to iterate here
-        while True:
-            r += dr
-            c += dc
-
-            if r < 0 or r >= size or c < 0 or c >= size:
+        sr = r
+        sc = c
+        key = (sr, sc, dir)
+        # we can't rely on the jump cache if we're in the row or column where we
+        # added the obstacle
+        if r != obs_r and c != obs_c and key in cached_jumps:
+            guard = cached_jumps[key]
+            if guard[0] < 0:
                 return 0
+        else:
+            while True:
 
-            if (r == obs_r and c == obs_c) or grid[r][c] == '#':
-                guard = (r - dr, c - dc, RIGHT[dir])
-                break
+                r += dr
+                c += dc
+
+                if r < 0 or r >= size or c < 0 or c >= size:
+                    # signal that this jump is off the grid
+                    cached_jumps[key] = (-10, -10, -10)
+                    return 0
+
+                if (r == obs_r and c == obs_c) or grid[r][c] == '#':
+                    guard = (r - dr, c - dc, RIGHT[dir])
+
+                    # we can't rely on the jump cache if we're in the row or
+                    # column where we added the obstacle, so don't store it
+                    if r != obs_r and c != obs_c:
+                        cached_jumps[key] = guard
+                    break
 
         # we have the same location and orientation again, we're in a loop
         if guard in seen:
