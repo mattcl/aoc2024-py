@@ -5,37 +5,37 @@ solutions](https://github.com/mattcl/aoc2024), with a similar
 performance-oriented goal.
 
 
-## Current runtime ~821.0 ms
+## Current runtime ~791.6 ms
 
 ```
-❯ aoc-tools python-summary benchmarks.json -l bench-suffixes.json
 +------------------------------------------------------+
 | Problem                     Time (ms)   % Total Time |
 +======================================================+
-| 01 historian hysteria         0.78987          0.096 |
-| 02 red nosed reports          3.10755          0.379 |
-| 03 mull it over               1.30501          0.159 |
-| 04 ceres search               6.23605          0.760 |
-| 05 print queue                1.74416          0.212 |
-| 06 guard gallivant           49.15757          5.988 |
-| 07 bridge repair             16.53118          2.014 |
-| 08 resonant collinearity      0.64084          0.078 |
-| 09 disk fragmenter           15.69040          1.911 |
-| 10 hoof it                    2.39359          0.292 |
-| 11 plutonium pebbles         61.45385          7.486 |
-| 12 garden groups             20.39959          2.485 |
-| 13 claw contraption           0.79196          0.096 |
-| 14 restroom redoubt          30.61815          3.730 |
-| 15 warehouse woes             9.38885          1.144 |
-| 16 reindeer maze             33.99312          4.141 |
-| 17 chronospatial computer     0.74870          0.091 |
-| 18 ram run                   14.70652          1.791 |
-| 19 linen layout              18.12457          2.208 |
-| 20 race condition            45.72816          5.570 |
-| 21 keypad conundrum           1.23783          0.151 |
-| 22 monkey market            483.54845         58.900 |
-| 23 lan party                  2.62262          0.319 |
-| Total                       820.95859        100.000 |
+| 01 historian hysteria         0.78525          0.099 |
+| 02 red nosed reports          3.17693          0.401 |
+| 03 mull it over               1.30740          0.165 |
+| 04 ceres search               6.08645          0.769 |
+| 05 print queue                1.73395          0.219 |
+| 06 guard gallivant           24.46934          3.091 |
+| 07 bridge repair             16.06673          2.030 |
+| 08 resonant collinearity      0.64567          0.082 |
+| 09 disk fragmenter           16.08741          2.032 |
+| 10 hoof it                    2.48994          0.315 |
+| 11 plutonium pebbles         61.94569          7.826 |
+| 12 garden groups             20.09246          2.538 |
+| 13 claw contraption           0.79108          0.100 |
+| 14 restroom redoubt          30.21541          3.817 |
+| 15 warehouse woes             9.42708          1.191 |
+| 16 reindeer maze             34.45536          4.353 |
+| 17 chronospatial computer     0.75820          0.096 |
+| 18 ram run                   14.70562          1.858 |
+| 19 linen layout              16.98857          2.146 |
+| 20 race condition            44.69211          5.646 |
+| 21 keypad conundrum           1.23606          0.156 |
+| 22 monkey market            480.26890         60.672 |
+| 23 lan party                  2.64624          0.334 |
+| 24 crossed wires              0.51128          0.065 |
+| Total                       791.58315        100.000 |
 +------------------------------------------------------+
 ```
 
