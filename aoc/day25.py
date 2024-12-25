@@ -33,7 +33,7 @@ class Solver(aoc.util.Solver):
                     self.p1 += 1
 
     def part_one(self) -> int:
-        return 0
+        return self.p1
 
     def part_two(self) -> int:
         return 0
