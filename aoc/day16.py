@@ -261,8 +261,6 @@ def prune_multiple_paths_to_same(graph, i):
                         return
 
 
-
-
 def dijkstra_min(graph: Graph, costs) -> int:
     # ndoes in the heap are
     # (cost, facing, node_idx)
@@ -293,8 +291,9 @@ def dijkstra_min(graph: Graph, costs) -> int:
 
 def dijkstra_all(graph: Graph, min_path_cost, costs) -> int:
     # ndoes in the heap are
-    # (cost, facing, node_idx)
-    heap = [(0, EAST, 0, [])]
+    # (cost, facing, node_idx, state_link)
+    heap = [(0, EAST, 0, -1)]
+    state_links = []
     unique_edges = set()
     junctions = set()
 
@@ -302,18 +301,21 @@ def dijkstra_all(graph: Graph, min_path_cost, costs) -> int:
 
     # now find the path
     while len(heap) > 0:
-        (cur_cost, facing, idx, path) = heappop(heap)
+        (cur_cost, facing, idx, link) = heappop(heap)
 
         if cur_cost > min_path_cost:
             break
 
         if idx == END:
-            for edge, dist in path:
-                if edge not in unique_edges:
-                    unique_edges.add(edge)
-                    total_dist += dist
-                    junctions.add(edge % 10000)
-                    junctions.add(edge // 10000)
+            cur_link = link
+            while cur_link >= 0:
+                edge = state_links[cur_link].edge
+                if edge.unique_idx not in unique_edges:
+                    unique_edges.add(edge.unique_idx)
+                    total_dist += edge.dist
+                    junctions.add(edge.to)
+                    junctions.add(edge.fr)
+                cur_link = state_links[cur_link].prev
 
             continue
 
@@ -331,6 +333,15 @@ def dijkstra_all(graph: Graph, min_path_cost, costs) -> int:
             if costs[edge.to] == UNVISITED_COST:
                 costs[edge.to] = next_cost
 
-            heappush(heap, (next_cost, edge.exit_dir, edge.to, path + [(edge.unique_idx, edge.dist)]))
+            next_link_idx = len(state_links)
+            state_links.append(StateLink(edge, link))
+
+            heappush(heap, (next_cost, edge.exit_dir, edge.to, next_link_idx))
 
     return total_dist + len(junctions)
+
+
+class StateLink(object):
+    def __init__(self, edge, prev):
+        self.edge = edge
+        self.prev = prev

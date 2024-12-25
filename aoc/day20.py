@@ -25,10 +25,9 @@ class Solver(aoc.util.Solver):
         cur = get_start(grid, width, height)
 
         path = []
-        cost = 0
 
         while True:
-            path.append((cur, cost))
+            path.append(cur)
             r, c = cur
 
             v = grid[r][c]
@@ -37,8 +36,6 @@ class Solver(aoc.util.Solver):
                 break
 
             grid[r][c] = '#'
-
-            cost += 1
 
             for dr, dc in DIRS:
                 nr = r + dr
@@ -85,23 +82,21 @@ def search(i: int) -> (int, int):
     p1 = 0
     p2 = 0
 
-    iloc, icost = path[i]
-    ir, ic = iloc
+    ir, ic = path[i]
 
     j = i + SHORTCUT
     while j < path_len:
-        jloc, jcost = path[j]
-        jr, jc = jloc
+        jr, jc = path[j]
 
         dist = abs(jr - ir) + abs(jc - ic)
 
-        if dist < 21 and jcost - icost - dist >= SHORTCUT:
+        if dist < 21 and j - i - dist >= SHORTCUT:
             if dist == 2:
                 p1 += 1
 
             p2 += 1
         elif dist > 20:
-            # we can jup ahead by at least this much
+            # we can jump ahead by at least this much
             j += dist - 20
             continue
 
