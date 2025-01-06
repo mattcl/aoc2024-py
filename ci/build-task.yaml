@@ -9,10 +9,10 @@ image_resource:
 inputs:
   # this repository will be provided to the task in the registry-image as a
   # directory named `repo`
+  - name: aoc-tools
   - name: repo
 
 run:
   # we execute the build script in the context of the this in the aoc-python
   # container, which contains py 3.12 and poetry, among other things.
-  dir: repo
-  path: ci/scripts/build.sh
+  path: repo/ci/scripts/build.sh
