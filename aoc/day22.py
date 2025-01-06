@@ -5,41 +5,19 @@ from multiprocessing import Pool
 
 import aoc.util
 
-# -9 Ob00000  0
-# -8 Ob00001  1
-# -7 Ob00010  2
-# -6 Ob00011  3
-# -5 Ob00100  4
-# -4 Ob00101  5
-# -3 Ob00110  6
-# -2 Ob00111  7
-# -1 Ob01000  8
-#  0 Ob01001  9
-#  1 Ob01010  10
-#  2 Ob01011  11
-#  3 Ob01100  12
-#  4 Ob01101  13
-#  5 Ob01110  14
-#  6 Ob01111  15
-#  7 Ob10000  16
-#  8 Ob10001  17
-#  9 Ob10010  18
-
-# N % 16,777,216 is equal to N & MOD_MASK;
 MOD_MASK = (1 << 24) - 1
-SEQ_MASK = (1 << 20) - 1
-
-# Under our encoding scheme, the max value is the following sequence
-#           9     0     0     0
-SEQ_MAX = 0b10010_01001_01001_01001
-# and the minimum is
-#          -9     0     0     0
-SEQ_MIN = 0b00000_01001_01001_01001
-
-SEQ_SIZE = SEQ_MAX + 1 - SEQ_MIN
+# SEQ_MASK = (1 << 20) - 1
 
 DESIRED_CHUNKS = 8
 UNSEEN = 1 << 22
+
+# base-19 I999
+SEQ_MAX = 126891
+SEQ_SIZE = SEQ_MAX + 1
+
+SLOT_1 = 19 * 19 * 19
+SLOT_2 = 19 * 19
+SLOT_3 = 19
 
 
 class Solver(aoc.util.Solver):
@@ -58,8 +36,8 @@ class Solver(aoc.util.Solver):
 
             for i in range(SEQ_SIZE):
                 # this is faster than summing an iterator
-                candiate = res[0][1][i] + res[1][1][i] + res[2][1][i] + res[3][1][i] + res[4][1][i] + res[5][1][i] + res[6][1][i] + res[7][1][i]
-                self.p2 = max(self.p2, candiate)
+                candidate = res[0][1][i] + res[1][1][i] + res[2][1][i] + res[3][1][i] + res[4][1][i] + res[5][1][i] + res[6][1][i] + res[7][1][i]
+                self.p2 = max(self.p2, candidate)
 
     def part_one(self) -> int:
         return self.p1
@@ -87,20 +65,38 @@ def compute(values):
     for i, n in enumerate(values):
         cur = n
         key = 0
-        prev = cur % 10
+        prev_digit = cur % 10
 
-        for j in range(2000):
+        cur = next_number(cur)
+        cur_digit = cur % 10
+        prev1 = cur_digit - prev_digit + 9
+        prev_digit = cur_digit
+
+        cur = next_number(cur)
+        cur_digit = cur % 10
+        prev2 = cur_digit - prev_digit + 9
+        prev_digit = cur_digit
+
+        cur = next_number(cur)
+        cur_digit = cur % 10
+        prev3 = cur_digit - prev_digit + 9
+        prev_digit = cur_digit
+
+        for j in range(2000 - 3):
             cur = next_number(cur)
             cur_digit = cur % 10
-            delta = cur_digit - prev
-            prev = cur_digit
-            key = ((key << 5) & SEQ_MASK) | (delta + 9)
+            delta = cur_digit - prev_digit + 9
+            # this is faster than the binary approach in rust
+            key = prev1 * SLOT_1 + prev2 * SLOT_2 + prev3 * SLOT_3 + delta
+            prev_digit = cur_digit
 
-            adjusted_key = key - SEQ_MIN
+            prev1 = prev2
+            prev2 = prev3
+            prev3 = delta
 
-            if j > 2 and seen[adjusted_key] != i:
-                seen[adjusted_key] = i
-                totals[adjusted_key] += cur_digit
+            if seen[key] != i:
+                seen[key] = i
+                totals[key] += cur_digit
 
         num_total += cur
 
